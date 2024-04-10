@@ -1,0 +1,39 @@
+<form  class = "add-courses" #form="ngForm" (ngSubmit)="addCourse(form)">
+    
+  
+    <div class="container">
+      <h3>Add new course category</h3>
+      <p>Please fill the form below.</p>
+      <hr>
+
+      <label for="courseName"><b>Course name</b></label>
+      <input type="text" placeholder="Course name category" name="courseName" ngModel #inputCourseName="ngModel" required minlength="5">
+      
+      <ng-container *ngIf="inputCourseName.touched">
+        <p class="error" *ngIf="inputCourseName?.errors?.['required']">
+          Course name is required.
+        </p>
+        <p class="error" *ngIf="inputCourseName?.errors?.['minlength']">
+          Course name must be at least 5 characters long.
+        </p>
+      </ng-container>
+
+      <label for="post"><b>Comment</b></label>
+      <textarea type="text" placeholder="Enter your comment here" name="post" id="post" ngModel #textareaPost="ngModel" required minlength="10"></textarea>
+  
+      <ng-container *ngIf="textareaPost.touched">
+        <p class="error" *ngIf="textareaPost?.errors?.['required']">
+          The field with your post is required.
+        </p>
+        <p class="error" *ngIf="textareaPost.errors?.['minlength']">
+          Post must be at least 10 characters long.
+        </p>
+      </ng-container>
+      <button>Post</button>
+      <button>Cancel</button>
+      
+    </div>
+    
+    
+  </form> 
+

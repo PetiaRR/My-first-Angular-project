@@ -1,0 +1,52 @@
+
+<form class = "register" #form="ngForm" (ngSubmit)="register(form)">
+  <div class="container">
+      <h3>Registration form</h3>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" ngModel #inputUsername="ngModel" required>
+
+      <ng-container *ngIf="inputUsername.touched">
+        <p class="error" *ngIf="inputUsername.errors?.['required']">
+          Username is required!
+        </p>
+      </ng-container>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" ngModel #inputEmail="ngModel" id="email" required>
+  
+      <ng-container *ngIf="inputEmail.touched">
+        <p class="error" *ngIf="inputEmail.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" id="password" ngModel #inputPassword="ngModel" required minlength="5">
+  
+      <ng-container *ngIf="inputPassword.touched">
+        <p class="error" *ngIf="inputPassword.errors?.['required']">
+          Password is required!
+        </p>
+        <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+          Password must be at least 4 characters!
+        </p>
+      </ng-container>
+
+      <label for="rePassword"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="rePassword" id="rePassword" ngModel #inputrePassword="ngModel" required>
+      <hr>
+  
+      
+      <button class="registerbtn">Register</button>
+    </div>
+  
+    <div class="container signin">
+      <p>Already have an account? <a routerLink="/login">Login</a></p>
+    </div>
+  </form> 

@@ -1,0 +1,22 @@
+<form  class = "login" #form="ngForm" (ngSubmit)="login(form)">
+    
+  
+    <div class="container">
+      <h3>Login form</h3>
+      <p>Please fill in this form to login.</p>
+      <hr>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter email" name="email" ngModel #inputEmail="ngModel"required>
+  
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" ngModel #inputPassword="ngModel" required>
+  
+      <button>Login</button>
+      
+    </div>
+    <div class="container register">
+        <p>You are not registered? <a routerLink="/register">Register</a></p>
+      </div>
+    
+  </form> 

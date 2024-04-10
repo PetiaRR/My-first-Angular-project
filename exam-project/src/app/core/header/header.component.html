@@ -1,0 +1,19 @@
+<div class="header">
+    <h1>KidKinder Blog</h1>
+    <p>New Approach to Kids Education</p>
+</div>
+
+<div class="topnav">
+    <a class="active" routerLink="/home">Home</a>
+    <a routerLink="/courses">Course categories</a>
+    
+    <div *ngIf="!isLoggedIn" class="topnav-right">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </div>
+    <div *ngIf="isLoggedIn" class="topnav-right">
+      <a routerLink="/add-course">Create new category</a>
+      <a routerLink="/profile">Profil</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+  </div> 

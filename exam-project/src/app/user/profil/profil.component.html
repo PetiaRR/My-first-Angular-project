@@ -1,0 +1,89 @@
+
+    
+  
+    <div class="container">
+      <h3>My profilе</h3>
+      <p>You can change your profile here.</p>
+      <hr>
+      <div>
+      <img src="../../../assets/img_avatar.png" alt="Avatar"> 
+    </div>
+    <ng-container *ngIf="!showEditMode">
+        <div class="flex">
+          <p>Username: {{ profileDetails.username }}</p>
+          
+        </div>
+        <div class="flex">
+          <p>Email: {{ profileDetails.email }}</p>
+          
+        </div>
+        
+        <button class="edit-button" (click)="onToggle()">Edit</button>
+      </ng-container>
+
+      <ng-container *ngIf="showEditMode">
+        <form [formGroup]="form" (ngSubmit)="saveProfileHandle()">
+          <!-- username -->
+          <div class="flex">
+            <p>Username:</p>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              [value]="profileDetails.username"
+              formControlName="username"
+            />
+          </div>
+  
+          <!-- username validations -->
+          <ng-container *ngIf="form.get('username')?.touched">
+            <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+              Username is required!
+            </p>
+            <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+              Username must have at least 5 characters!
+            </p>
+          </ng-container>
+  
+          <!-- email -->
+          <div class="flex">
+            <p>Email:</p>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              [value]="profileDetails.email"
+              formControlName="email"
+            />
+          </div>
+  
+          <!-- email validations -->
+          <ng-container *ngIf="form.get('email')?.touched">
+            <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+              Email is required!
+            </p>
+            <p
+            class="error"
+            *ngIf="form.get('email')?.errors?.['required']"
+          >
+            Email is required!
+          </p>
+          </ng-container>
+  
+           
+          <!-- Actions -->
+          <button class="red-button" (click)="onCancel($event)">Cancel</button>
+          <button
+            class="green-button"
+            [disabled]="form.invalid"
+            [style]="{ backgroundColor: form.invalid ? 'grey' : 'green' }"
+          >
+            Save
+          </button>
+        </form>
+      </ng-container>
+
+      
+    
+  
+

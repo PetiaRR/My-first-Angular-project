@@ -1,0 +1,25 @@
+
+      <!-- theme component  -->
+      <div *ngFor="let course of courses" class="theme-container">
+        <div class="theme-name-wrapper">
+          <div class="theme-name">
+            <a [routerLink]="course._id" class="normal">
+              <h2>{{ course.courseName }}</h2>
+            </a>
+            <div class="columns">
+              <div>
+                <p>
+                  Date: <time>{{ course.created_at }}</time>
+                </p>
+                <div class="nick-name">
+                  <p>
+                    Username: <span></span>
+                  </p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
