@@ -27,7 +27,7 @@ exports.login = async (userData) => {
      }
      const isValid = await bcrypt.compare(userData.password, user.password);
      if (!isValid) {
-        throw new Error('No such user');
+        throw new Error('Wrong password');
      }
 
      const token = jwt.sign({

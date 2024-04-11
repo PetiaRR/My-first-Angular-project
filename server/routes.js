@@ -5,6 +5,6 @@ const courseController = require('./controllers/coursesController.js')
 
 router.use ('/auth', userController);
 router.use ('/users', profileController);
-router.use ('/auth/courses', courseController);
-router.use ('/auth/courses/:id', courseController)
+router.use ('/courses', courseController);
+router.use ('/courses/:id', courseController)
 module.exports = router;

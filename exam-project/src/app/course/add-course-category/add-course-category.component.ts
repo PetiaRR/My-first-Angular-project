@@ -18,11 +18,20 @@ export class AddCourseCategoryComponent {
     if (form.invalid) {
       return;
     }
-debugger
+
     const { courseName, post } = form.value;
-    const userId = sessionStorage.getItem("token")
-    this.apiService.createCourse(courseName, post).subscribe(() => {
-      this.router.navigate(['/courses']);
-    });
+    const user = sessionStorage.getItem('token');
+    
+    if (user) {
+      const userIdObj = JSON.parse(user);
+      const userId = userIdObj.userId
+      this.apiService.createCourse(courseName, post, userId).subscribe(() => {
+        this.router.navigate(['/courses']);
+      })
+    }
+    //const userIdObj = JSON.parse(userId);
+    // this.apiService.createCourse(courseName, post, userId).subscribe(() => {
+    //   this.router.navigate(['/courses']);
+    // });
   }
 }

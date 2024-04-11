@@ -9,9 +9,25 @@
       <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Enter email" name="email" ngModel #inputEmail="ngModel"required>
   
+      <ng-container *ngIf="inputEmail.touched">
+        <p class="error" *ngIf="inputEmail.errors?.['required']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" ngModel #inputPassword="ngModel" required>
   
+      <ng-container *ngIf="inputPassword.touched">
+        <p class="error" *ngIf="inputPassword.errors?.['required']">
+          Password is required!
+        </p>
+        
+      </ng-container>
+
       <button>Login</button>
       
     </div>

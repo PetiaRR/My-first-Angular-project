@@ -52,7 +52,7 @@ export class UserService implements OnDestroy {
   }
 
   login (email: string, password: string) {
-    debugger
+    
     return this.http
     .post<UserForAuth>(`${this.apiUrl}/auth/login`, {
       email,
@@ -75,6 +75,7 @@ export class UserService implements OnDestroy {
   }
 
   updateProfile(username: string, email: string) {
+    
     return this.http
       .put<UserForAuth>(`${this.apiUrl}/users/profile`, {
         
